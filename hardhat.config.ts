@@ -1,20 +1,22 @@
-import "@fhevm/hardhat-plugin";
+import type { HardhatUserConfig } from "hardhat/config";
+import { vars } from "hardhat/config";
+
+// Import plugins in a specific order to avoid conflicts
 import "@nomicfoundation/hardhat-chai-matchers";
 import "@nomicfoundation/hardhat-ethers";
 import "@nomicfoundation/hardhat-verify";
 import "@typechain/hardhat";
 import "hardhat-deploy";
 import "hardhat-gas-reporter";
-import type { HardhatUserConfig } from "hardhat/config";
-import { vars } from "hardhat/config";
 import "solidity-coverage";
 
 import "./tasks/accounts";
-import "./tasks/FHECounter";
+import "./tasks/FHESignIn";
 
 // Run 'npx hardhat vars setup' to see the list of variables that need to be set
 
 const MNEMONIC: string = vars.get("MNEMONIC", "test test test test test test test test test test test junk");
+const PRIVATE_KEY: string | undefined = vars.has("PRIVATE_KEY") ? vars.get("PRIVATE_KEY") : undefined;
 const INFURA_API_KEY: string = vars.get("INFURA_API_KEY", "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
 
 const config: HardhatUserConfig = {
@@ -49,7 +51,7 @@ const config: HardhatUserConfig = {
       url: "http://localhost:8545",
     },
     sepolia: {
-      accounts: {
+      accounts: PRIVATE_KEY ? [PRIVATE_KEY] : {
         mnemonic: MNEMONIC,
         path: "m/44'/60'/0'/0/",
         count: 10,

@@ -1,0 +1,169 @@
+.tutorial-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color-light);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  animation: fadeInRight 0.6s ease-out 0.4s both;
+}
+
+.tutorial-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--border-color);
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.tutorial-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.75rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 2px solid var(--border-color-light);
+}
+
+.tutorial-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.02em;
+}
+
+.tutorial-icon {
+  color: var(--primary-color);
+  filter: drop-shadow(0 2px 4px rgba(236, 72, 153, 0.2));
+  transition: var(--transition);
+}
+
+.tutorial-card:hover .tutorial-icon {
+  transform: rotate(5deg) scale(1.1);
+}
+
+.tutorial-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.tutorial-step {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  transition: var(--transition);
+  position: relative;
+}
+
+.tutorial-step::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--primary-gradient);
+  border-radius: var(--radius-sm);
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.tutorial-step:hover {
+  background: rgba(236, 72, 153, 0.03);
+  transform: translateX(4px);
+}
+
+.tutorial-step:hover::before {
+  opacity: 1;
+}
+
+.step-number {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--primary-gradient);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  position: relative;
+  z-index: 1;
+}
+
+.tutorial-step:hover .step-number {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: var(--shadow-md);
+}
+
+.step-content {
+  flex: 1;
+  padding-top: 0.25rem;
+}
+
+.step-content h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.step-content p {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.tutorial-note {
+  margin-top: 0.75rem;
+  padding: 1rem 1.25rem;
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.08) 0%, rgba(139, 92, 246, 0.08) 100%);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+  color: var(--primary-dark);
+  line-height: 1.6;
+  font-weight: 500;
+  border: 1px solid var(--border-color-light);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.tutorial-note:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.12) 0%, rgba(139, 92, 246, 0.12) 100%);
+}
+
+.tutorial-note svg {
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+  color: var(--primary-color);
+  filter: drop-shadow(0 1px 2px rgba(236, 72, 153, 0.2));
+}
+
